@@ -8,7 +8,7 @@ export default function Dialog({isOpen, closeDialog, children}){
 
   const handleClose = () => {
     setToClose(true)
-    setTimeout(() => closeDialog(), 250)
+    setTimeout(() => closeDialog(), 300)
   }
 
   useEffect(() => {

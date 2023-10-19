@@ -4,6 +4,7 @@
 }
 
 .toClose {
+  opacity: 0;
   animation: close .3s linear;
   border: none;
 }
