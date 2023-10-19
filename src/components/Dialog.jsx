@@ -14,7 +14,7 @@ export default function Dialog({isOpen, closeDialog, children}){
     return () => { dialog.close() }
   })
 
-  return <dialog ref={ref}>
+  return <dialog ref={ref} className={styles.dialog}>
     <div className={styles.children}>{children}</div>
     <button onClick={closeDialog}>X</button>
   </dialog>
