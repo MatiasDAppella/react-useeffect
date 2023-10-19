@@ -1,10 +1,15 @@
 .dialog {
-  animation: show .5s;
+  animation: show .3s linear;
+  border: none;
+}
+
+.toClose {
+  animation: close .3s linear;
   border: none;
 }
 
 .children {
-  width: 70vh;
+  width: 70vw;
 }
 
 .children > img {
@@ -19,5 +24,15 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes close {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px)
   }
 }

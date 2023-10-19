@@ -1,21 +1,30 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import styles from "./Dialog.module.css"
 
 // eslint-disable-next-line react/prop-types
 export default function Dialog({isOpen, closeDialog, children}){
+  const [toClose, setToClose] = useState(false)
   const ref = useRef(null)
 
+  const handleClose = () => {
+    setToClose(true)
+    setTimeout(() => closeDialog(), 250)
+  }
+
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen) return setToClose(false)
 
     const dialog = ref.current
     dialog.showModal()
 
-    return () => { dialog.close() }
-  })
+    return () => dialog.close()
+  }, [isOpen])
 
-  return <dialog ref={ref} className={styles.dialog}>
+  return (isOpen) && <dialog
+    ref={ref}
+    className={(!toClose) ? styles.dialog : styles.toClose}
+    >
     <div className={styles.children}>{children}</div>
-    <button onClick={closeDialog}>X</button>
+    <button onClick={handleClose}>X</button>
   </dialog>
 }
